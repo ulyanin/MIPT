@@ -4,15 +4,21 @@
 #include <unistd.h>
 #include <thread>
 #include <QtCore/QThreadPool>
+#include <QtCore/QCoreApplication>
 #include "Helper.h"
 
-int main()
+int main(int argc, char ** argv)
 {
-    Helper * h1 = new Helper();
-    Helper * h2 = new Helper();
-    QThreadPool::globalInstance()->setMaxThreadCount(2);
-    QThreadPool::globalInstance()->start(h1);
-    QThreadPool::globalInstance()->start(h2);
-    QThreadPool::globalInstance()->waitForDone();
+    QCoreApplication a(argc, argv);
+    Thread1 th1;
+    Thread2 th2;
+    MyObject ob;
+    QObject::connect(&th1, SIGNAL(MySignal()), &ob, SLOT(MySlot()));
+    th2.start();
+    ob.moveToThread(&th2);
+    th1.start();
+    th1.wait();
+    th2.quit();
+    th2.wait();
     return 0;
 }
