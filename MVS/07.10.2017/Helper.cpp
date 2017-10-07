@@ -3,12 +3,10 @@
 //
 
 #include <iostream>
-#include <mutex>
 #include "Helper.h"
 
 
 Helper::Helper()
-    : stopped(false)
 {
 
 }
@@ -25,15 +23,11 @@ void Helper::run()
 //        std::cout << "Thread is wating" << std::endl;
 //        yieldCurrentThread();
 //    }
-    QMutexLocker lock(&mutex);
-    std::cout << "Thread is wating" << std::endl;
-    cond.wait(&mutex);
-    std::cout << "Thread is stopping" << std::endl;
-}
 
-void Helper::stop()
-{
 //    QMutexLocker lock(&mutex);
-//    stopped = true;
-    cond.wakeAll();
+//    std::cout << "Thread is wating" << std::endl;
+//    cond.wait(&mutex);
+//    std::cout << "Thread is stopping" << std::endl;
+
+    std::cout << "Thread is working" << std::endl;
 }
