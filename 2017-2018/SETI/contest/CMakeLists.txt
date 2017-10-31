@@ -3,5 +3,5 @@ project(contest)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES host.cpp)
+set(SOURCE_FILES ip.cpp)
 add_executable(contest ${SOURCE_FILES})
