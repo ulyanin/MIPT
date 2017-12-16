@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int BLOCK_SIZE = 4 * 1024;
+const int BLOCK_SIZE = 1024;
 
 double readByBlock(int * data, int n, int cnt, int block_size = BLOCK_SIZE)
 {
@@ -45,7 +45,7 @@ void readDataBlocks()
     std::cout << "L1 cache_size = 32KB" << endl;
     std::cout << "array_size = " << n << endl;
 #endif
-    for (int cnt = 1; cnt <= 65; ++cnt) {
+    for (int cnt = 1; cnt <= 30; ++cnt) {
 #ifdef DEBUG
         std::cout << "cnt = " << cnt << endl;
 #endif
